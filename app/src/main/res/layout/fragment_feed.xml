@@ -12,8 +12,8 @@
         android:orientation="horizontal"
         android:gravity="center_vertical|center">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/earth"
             android:layout_marginEnd="10dp"></ImageView>
         <TextView
@@ -22,7 +22,7 @@
             android:text="Daily News"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="14sp"></TextView>
+            android:textSize="18sp"></TextView>
 
 
 

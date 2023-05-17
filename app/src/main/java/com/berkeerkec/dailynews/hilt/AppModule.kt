@@ -2,9 +2,12 @@ package com.berkeerkec.dailynews.hilt
 
 import android.content.Context
 import androidx.room.Room
+import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
 import com.berkeerkec.dailynews.db.ArticleDatabase
 import com.berkeerkec.dailynews.util.Constant.Companion.BASE_URL
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +39,11 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDao(database: ArticleDatabase) = database.getArticleDao()
+
+    @Singleton
+    @Provides
+    fun provideGlide(@ApplicationContext context: Context) = Glide.with(context)
+        .setDefaultRequestOptions(
+            RequestOptions().error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+        )
 }

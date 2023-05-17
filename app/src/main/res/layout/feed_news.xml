@@ -11,6 +11,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/feedView"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/example_image"></ImageView>
@@ -21,6 +22,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/feedTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="İklim değişikliği: Sierra Madre dağlarındaki yağmur ormanından kalanı koruma mücadelesi"
@@ -34,6 +36,7 @@
                 android:layout_marginEnd="5dp"/>
 
             <TextView
+                android:id="@+id/feedSourceText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -73,6 +76,7 @@
                         android:src="@drawable/ellipse_image" />
 
                     <TextView
+                        android:id="@+id/feedTimeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2023-05-10T19:11:00Z" />

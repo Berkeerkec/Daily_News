@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
 import com.berkeerkec.dailynews.db.ArticleDatabase
+import com.berkeerkec.dailynews.repo.NewsRepository
 import com.berkeerkec.dailynews.util.Constant.Companion.BASE_URL
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -46,4 +47,10 @@ object AppModule {
         .setDefaultRequestOptions(
             RequestOptions().error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
         )
+
+    @Singleton
+    @Provides
+    fun provideNewsRepository(api : NewsApi) : NewsRepository{
+        return NewsRepository(api)
+    }
 }

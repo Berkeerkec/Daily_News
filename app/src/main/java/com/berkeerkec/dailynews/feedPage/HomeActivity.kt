@@ -3,6 +3,7 @@ package com.berkeerkec.dailynews.feedPage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.berkeerkec.dailynews.R
+import com.berkeerkec.dailynews.adapters.DetailsAdapter
 import com.berkeerkec.dailynews.adapters.NewsAdapter
 import com.berkeerkec.dailynews.databinding.ActivityHomeBinding
 import com.berkeerkec.dailynews.hilt.NewsFragmentFactory

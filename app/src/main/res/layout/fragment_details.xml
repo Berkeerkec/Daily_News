@@ -6,96 +6,37 @@
     android:orientation="vertical"
     tools:context=".feedPage.DetailsFragment">
 
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/detailsBackView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:src="@drawable/back_image"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share_image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"/>
 
-                <ImageView
-                    android:id="@+id/detailsBackView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/back_image"
-                    android:paddingEnd="15dp"
-                    android:paddingStart="15dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bookmark_image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"/>
+    </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/share_image"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="15dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/detailsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/bookmark_image"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="50dp"/>
-            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/detailsImageView"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/example_image"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:id="@+id/detailsTitleView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="İklim değişikliği: Sierra Madre dağlarındaki yağmur ormanından kalanı koruma mücadelesi."
-                android:layout_margin="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp">
-
-                <TextView
-                    android:id="@+id/detailsSourceView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="0dp"
-                    android:text="Yahoo Entertainment" />
-
-                <TextView
-                    android:id="@+id/detailsTimeView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="0dp"
-                    android:text="2023-05-10T19:11:00Z" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/detailsDescriptionView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:ellipsize="end"
-                android:maxLines="10"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

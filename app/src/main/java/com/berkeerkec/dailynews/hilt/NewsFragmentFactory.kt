@@ -2,6 +2,7 @@ package com.berkeerkec.dailynews.hilt
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
+import com.berkeerkec.dailynews.adapters.DetailsAdapter
 import com.berkeerkec.dailynews.adapters.NewsAdapter
 import com.berkeerkec.dailynews.feedPage.DetailsFragment
 import com.berkeerkec.dailynews.feedPage.FeedFragment
@@ -10,7 +11,8 @@ import javax.inject.Inject
 
 class NewsFragmentFactory @Inject constructor(
     private val adapter : NewsAdapter,
-    private val glide : RequestManager
+    private val glide : RequestManager,
+    private val detailsAdapter : DetailsAdapter
 ): FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -18,7 +20,7 @@ class NewsFragmentFactory @Inject constructor(
         return when(className){
 
             FeedFragment::class.java.name -> FeedFragment(adapter)
-            DetailsFragment::class.java.name -> DetailsFragment(glide)
+            DetailsFragment::class.java.name -> DetailsFragment(glide, detailsAdapter)
             else -> super.instantiate(classLoader, className)
         }
     }

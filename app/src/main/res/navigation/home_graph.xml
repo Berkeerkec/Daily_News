@@ -47,5 +47,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.berkeerkec.dailynews.feedPage.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="article"
+            app:argType="com.berkeerkec.dailynews.model.Article" />
+    </fragment>
 </navigation>

@@ -3,11 +3,14 @@ package com.berkeerkec.dailynews.hilt
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.berkeerkec.dailynews.adapters.NewsAdapter
+import com.berkeerkec.dailynews.feedPage.DetailsFragment
 import com.berkeerkec.dailynews.feedPage.FeedFragment
+import com.bumptech.glide.RequestManager
 import javax.inject.Inject
 
 class NewsFragmentFactory @Inject constructor(
-    private val adapter : NewsAdapter
+    private val adapter : NewsAdapter,
+    private val glide : RequestManager
 ): FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -15,6 +18,7 @@ class NewsFragmentFactory @Inject constructor(
         return when(className){
 
             FeedFragment::class.java.name -> FeedFragment(adapter)
+            DetailsFragment::class.java.name -> DetailsFragment(glide)
             else -> super.instantiate(classLoader, className)
         }
     }

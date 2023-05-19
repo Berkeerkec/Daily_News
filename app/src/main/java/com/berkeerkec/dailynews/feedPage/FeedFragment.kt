@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.adapters.NewsAdapter
@@ -64,6 +65,9 @@ class FeedFragment @Inject constructor(
                 }
             }
         })
+        adapter.setOnItemClickListener {
+            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment(it))
+        }
     }
 
 

@@ -44,11 +44,12 @@ class NewsAdapter @Inject constructor(
         holder.binding.feedTimeText.text = article.publishedAt
         holder.binding.feedTitleText.text = article.title
         glide.load(article.urlToImage).into(holder.binding.feedView)
-        holder.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener {view ->
             onItemClickListener?.let {
                 it(article)
             }
         }
+
     }
 
     private var onItemClickListener : ((Article) -> Unit)? = null

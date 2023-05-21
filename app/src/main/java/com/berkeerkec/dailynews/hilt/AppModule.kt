@@ -6,6 +6,7 @@ import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
 import com.berkeerkec.dailynews.db.ArticleDatabase
 import com.berkeerkec.dailynews.repo.NewsRepository
+import com.berkeerkec.dailynews.repo.SearchRepository
 import com.berkeerkec.dailynews.util.Constant.Companion.BASE_URL
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -52,5 +53,11 @@ object AppModule {
     @Provides
     fun provideNewsRepository(api : NewsApi) : NewsRepository{
         return NewsRepository(api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchRepository(api : NewsApi) : SearchRepository{
+        return SearchRepository(api)
     }
 }

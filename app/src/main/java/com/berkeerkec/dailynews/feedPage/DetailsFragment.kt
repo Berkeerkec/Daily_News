@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.databinding.FragmentDetailsBinding
@@ -38,12 +39,10 @@ class DetailsFragment @Inject constructor(
         arguments?.let {
 
             val article = DetailsFragmentArgs.fromBundle(it).article
-
-            binding.detailsDescriptionView.text = article.content
-            binding.detailsSourceView.text = article.source.name
-            binding.detailsTimeView.text = article.publishedAt
-            binding.detailsTitleView.text = article.title
-            glide.load(article.urlToImage).into(binding.detailsImageView)
+            binding.webView.apply {
+                webViewClient = WebViewClient()
+                loadUrl(article.url)
+            }
         }
 
         binding.detailsBackView.setOnClickListener {

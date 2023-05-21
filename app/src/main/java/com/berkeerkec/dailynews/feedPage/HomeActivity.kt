@@ -2,6 +2,10 @@ package com.berkeerkec.dailynews.feedPage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.adapters.NewsAdapter
 import com.berkeerkec.dailynews.databinding.ActivityHomeBinding
@@ -9,6 +13,7 @@ import com.berkeerkec.dailynews.hilt.NewsFragmentFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -19,8 +24,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var fragmentFactory: NewsFragmentFactory
 
     private lateinit var binding : ActivityHomeBinding
-    private lateinit var adapter : NewsAdapter
-    private lateinit var glide : RequestManager
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,41 +33,28 @@ class HomeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        glide = Glide.with(applicationContext)
-        adapter = NewsAdapter(glide)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
+        navController = navHostFragment.navController
+
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.feedHomeFragment-> {
-                     val feedHomeFragment = FeedFragment(adapter)
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fragmentContainerView2,
-                        feedHomeFragment
-                    ).commit()
+                     navController.navigate(R.id.feedFragment)
                     true
                 }
                 R.id.searchHomeFragment-> {
-                    val searchHomeFragment = SearchFragment()
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fragmentContainerView2,
-                        searchHomeFragment
-                    ).commit()
+                    navController.navigate(R.id.searchFragment)
                     true
                 }
                 R.id.bookmarkedHomeFragment-> {
-                    val bookmarkedHomeFragment = BookMarkedFragment()
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fragmentContainerView2,
-                        bookmarkedHomeFragment
-                    ).commit()
+                    navController.navigate(R.id.bookMarkedFragment)
                     true
                 }
                 R.id.settingsHomeFragment-> {
-                    val settingsHomeFragment = SettingsFragment()
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fragmentContainerView2,
-                        settingsHomeFragment
-                    ).commit()
+                    navController.navigate(R.id.settingsFragment)
                     true
                 }
                 else -> false

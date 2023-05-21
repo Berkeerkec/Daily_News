@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.berkeerkec.dailynews.R
@@ -24,8 +26,10 @@ class FeedFragment @Inject constructor(
     private var fragmentBinding : FragmentFeedBinding? = null
     lateinit var viewModel : NewsViewModel
     val TAG = "FeedFragment"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -34,6 +38,7 @@ class FeedFragment @Inject constructor(
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

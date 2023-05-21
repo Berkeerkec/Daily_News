@@ -52,4 +52,9 @@
             android:name="article"
             app:argType="com.berkeerkec.dailynews.model.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.berkeerkec.dailynews.feedPage.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

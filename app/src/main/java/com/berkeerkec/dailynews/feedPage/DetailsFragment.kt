@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.databinding.FragmentDetailsBinding
@@ -30,7 +27,6 @@ class DetailsFragment @Inject constructor(
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_details, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,10 +38,12 @@ class DetailsFragment @Inject constructor(
         arguments?.let {
 
             val article = DetailsFragmentArgs.fromBundle(it).article
-            binding.webView.apply {
-                webViewClient = WebViewClient()
-                loadUrl(article.url)
-            }
+
+            binding.detailsDescriptionView.text = article.content
+            binding.detailsSourceView.text = article.source.name
+            binding.detailsTimeView.text = article.publishedAt
+            binding.detailsTitleView.text = article.title
+            glide.load(article.urlToImage).into(binding.detailsImageView)
         }
 
         binding.detailsBackView.setOnClickListener {

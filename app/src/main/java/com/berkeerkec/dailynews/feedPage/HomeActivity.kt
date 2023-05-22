@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.berkeerkec.dailynews.R
+import com.berkeerkec.dailynews.adapters.DetailsAdapter
 import com.berkeerkec.dailynews.adapters.NewsAdapter
 import com.berkeerkec.dailynews.databinding.ActivityHomeBinding
 import com.berkeerkec.dailynews.hilt.NewsFragmentFactory

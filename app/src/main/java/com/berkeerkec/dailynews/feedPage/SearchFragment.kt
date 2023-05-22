@@ -68,24 +68,27 @@ class SearchFragment @Inject constructor(
                     }
                 }
             }
-
         }
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer {response ->
 
             when(response){
                 is Resource.Success -> {
+                    binding.progressBar2.visibility = View.GONE
+                    binding.searchRecyclerView.visibility = View.VISIBLE
                     response.data?.let {
                         adapter.differ.submitList(it.articles)
                     }
                 }
                 is Resource.Error -> {
+                    binding.progressBar2.visibility = View.GONE
                     response.message?.let {
                         Log.e(TAG, "An error accured: $it")
                     }
                 }
                 is Resource.Loading -> {
-
+                    binding.progressBar2.visibility = View.VISIBLE
+                    binding.searchRecyclerView.visibility = View.GONE
                 }
             }
         })

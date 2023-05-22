@@ -3,18 +3,11 @@ package com.berkeerkec.dailynews.feedPage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.berkeerkec.dailynews.R
-import com.berkeerkec.dailynews.adapters.DetailsAdapter
-import com.berkeerkec.dailynews.adapters.NewsAdapter
 import com.berkeerkec.dailynews.databinding.ActivityHomeBinding
 import com.berkeerkec.dailynews.hilt.NewsFragmentFactory
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
-import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

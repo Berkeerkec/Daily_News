@@ -56,17 +56,19 @@ class FeedFragment @Inject constructor(
 
             when(response){
                 is Resource.Success -> {
+                    binding.progressBar.visibility = View.GONE
                     response.data?.let {
                         adapter.differ.submitList(it.articles)
                     }
                 }
                 is Resource.Error -> {
+                    binding.progressBar.visibility = View.GONE
                     response.message?.let {
                         Log.e(TAG, "An error accured: $it")
                     }
                 }
                 is Resource.Loading -> {
-
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         })

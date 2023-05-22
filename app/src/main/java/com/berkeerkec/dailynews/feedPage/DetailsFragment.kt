@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.databinding.FragmentDetailsBinding
 import com.bumptech.glide.RequestManager
 import javax.inject.Inject
 
-class DetailsFragment @Inject constructor(
-    private val glide : RequestManager
-): Fragment() {
+class DetailsFragment : Fragment() {
 
     private var fragmentBinding : FragmentDetailsBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,12 +37,10 @@ class DetailsFragment @Inject constructor(
         arguments?.let {
 
             val article = DetailsFragmentArgs.fromBundle(it).article
-
-            binding.detailsDescriptionView.text = article.content
-            binding.detailsSourceView.text = article.source.name
-            binding.detailsTimeView.text = article.publishedAt
-            binding.detailsTitleView.text = article.title
-            glide.load(article.urlToImage).into(binding.detailsImageView)
+            binding.deatilsWebView.apply {
+                webViewClient = WebViewClient()
+                loadUrl(article.url)
+            }
         }
 
         binding.detailsBackView.setOnClickListener {

@@ -6,15 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.databinding.FragmentDetailsBinding
+import com.berkeerkec.dailynews.model.Article
+import com.berkeerkec.dailynews.viewmodel.DetailsViewModel
 import com.bumptech.glide.RequestManager
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
 
     private var fragmentBinding : FragmentDetailsBinding? = null
+
+    lateinit var viewModel : DetailsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,6 +40,8 @@ class DetailsFragment : Fragment() {
         val binding = FragmentDetailsBinding.bind(view)
         fragmentBinding = binding
 
+        viewModel = ViewModelProvider(requireActivity())[DetailsViewModel::class.java]
+
         arguments?.let {
 
             val article = DetailsFragmentArgs.fromBundle(it).article
@@ -41,12 +49,24 @@ class DetailsFragment : Fragment() {
                 webViewClient = WebViewClient()
                 loadUrl(article.url)
             }
+
+            saveArticle(article)
         }
+
+
 
         binding.detailsBackView.setOnClickListener {
             findNavController().popBackStack()
         }
 
+    }
+
+    fun saveArticle(article : Article){
+        fragmentBinding?.detailsMarkView?.setOnClickListener {
+            fragmentBinding?.detailsMarkView?.setImageResource(R.drawable.bookmarkedblack_image)
+            viewModel.insertArticle(article)
+            Snackbar.make(it,"News saved successfully", Snackbar.LENGTH_LONG).show()
+        }
     }
 
 

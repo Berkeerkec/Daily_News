@@ -3,6 +3,7 @@ package com.berkeerkec.dailynews.hilt
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.berkeerkec.dailynews.adapters.NewsAdapter
+import com.berkeerkec.dailynews.feedPage.BookMarkedFragment
 import com.berkeerkec.dailynews.feedPage.DetailsFragment
 import com.berkeerkec.dailynews.feedPage.FeedFragment
 import com.berkeerkec.dailynews.feedPage.SearchFragment
@@ -20,6 +21,7 @@ class NewsFragmentFactory @Inject constructor(
 
             FeedFragment::class.java.name -> FeedFragment(adapter)
             SearchFragment::class.java.name -> SearchFragment(adapter)
+            BookMarkedFragment::class.java.name -> BookMarkedFragment(adapter)
             else -> super.instantiate(classLoader, className)
         }
     }

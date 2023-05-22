@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
+import com.berkeerkec.dailynews.db.ArticleDao
 import com.berkeerkec.dailynews.db.ArticleDatabase
+import com.berkeerkec.dailynews.repo.BookmarkedRepository
+import com.berkeerkec.dailynews.repo.DetailsRepository
 import com.berkeerkec.dailynews.repo.NewsRepository
 import com.berkeerkec.dailynews.repo.SearchRepository
 import com.berkeerkec.dailynews.util.Constant.Companion.BASE_URL
@@ -59,5 +62,17 @@ object AppModule {
     @Provides
     fun provideSearchRepository(api : NewsApi) : SearchRepository{
         return SearchRepository(api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDetailsRepository(dao : ArticleDao) :  DetailsRepository{
+        return DetailsRepository(dao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBookmarkedRepository(dao : ArticleDao) : BookmarkedRepository{
+        return BookmarkedRepository(dao)
     }
 }

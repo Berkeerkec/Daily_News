@@ -19,6 +19,7 @@ class NewsViewModel @Inject constructor(
     val breakingNews : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
 
+    var breakingNewsResponse : NewsResponse? = null
     init {
         getBreakingNews("us")
     }
@@ -32,7 +33,15 @@ class NewsViewModel @Inject constructor(
     private fun handleBrakingNewsResponse(response : Response<NewsResponse>) : Resource<NewsResponse>{
         if (response.isSuccessful){
             response.body()?.let {
-                return Resource.Success(it)
+                breakingNewsPage++
+                if (breakingNewsResponse == null){
+                    breakingNewsResponse = it
+                }else{
+                    val oldArticle = breakingNewsResponse?.articles
+                    val newArticle = it.articles
+                    oldArticle?.addAll(newArticle)
+                }
+                return Resource.Success(breakingNewsResponse ?: it)
             }
         }
         return Resource.Error(response.message())

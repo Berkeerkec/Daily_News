@@ -40,7 +40,7 @@ class NewsAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
         val article = differ.currentList[position]
-        holder.binding.feedSourceText.text = article.source.name
+        holder.binding.feedSourceText.text = article.source?.name
         holder.binding.feedTimeText.text = article.publishedAt
         holder.binding.feedTitleText.text = article.title
         glide.load(article.urlToImage).into(holder.binding.feedView)

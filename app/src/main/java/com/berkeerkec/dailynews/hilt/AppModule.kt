@@ -2,6 +2,7 @@ package com.berkeerkec.dailynews.hilt
 
 import android.content.Context
 import androidx.room.Room
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
 import com.berkeerkec.dailynews.db.ArticleDao
@@ -49,7 +50,11 @@ object AppModule {
     @Provides
     fun provideGlide(@ApplicationContext context: Context) = Glide.with(context)
         .setDefaultRequestOptions(
-            RequestOptions().error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+            RequestOptions().error(R.drawable.error_image).placeholder(CircularProgressDrawable(context).apply {
+                strokeWidth =  8f
+                centerRadius = 40f
+                start()
+            })
         )
 
     @Singleton

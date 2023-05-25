@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -75,7 +76,7 @@ class FeedFragment @Inject constructor(
                     binding.progressBar.visibility = View.GONE
                     isLoading = false
                     response.message?.let {
-                        Log.e(TAG, "An error accured: $it")
+                        Toast.makeText(requireContext(),"An error occured: $it", Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading -> {

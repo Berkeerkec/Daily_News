@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.berkeerkec.dailynews.R
@@ -105,6 +106,10 @@ class SearchFragment @Inject constructor(
                 }
             }
         })
+
+        adapter.setOnItemClickListener {
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToDetailsFragment(it))
+        }
     }
 
     var isLoading = false

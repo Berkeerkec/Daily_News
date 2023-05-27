@@ -26,7 +26,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/loginEmailText"
+            android:id="@+id/signUpEmailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -35,7 +35,7 @@
             android:textColorHint="#FFAFAAAA"/>
 
         <EditText
-            android:id="@+id/loginPasswordText"
+            android:id="@+id/signUpPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -46,7 +46,7 @@
             android:textColorHint="#FFAFAAAA"/>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:textSize="14sp"

@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.feedHomeFragment-> {
-                     navController.navigate(R.id.feedFragment)
+                    navController.navigate(R.id.feedFragment)
                     true
                 }
                 R.id.searchHomeFragment-> {

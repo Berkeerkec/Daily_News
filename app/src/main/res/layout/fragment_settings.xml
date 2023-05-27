@@ -77,15 +77,18 @@
         android:layout_height="1dp"
         android:background="#CAC8C8"
         android:layout_marginStart="40dp"/>
+
     <TextView
+        android:id="@+id/settigsLogoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/logout_image"
+        android:drawablePadding="10dp"
         android:padding="15dp"
         android:text="Log Out"
-        android:textSize="18sp"
         android:textColor="@color/black"
-        android:drawablePadding="10dp"
-        android:drawableStart="@drawable/logout_image"/>
+        android:textSize="18sp" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

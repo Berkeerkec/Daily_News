@@ -5,11 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class LoginFragment @Inject constructor(
+    private val auth: FirebaseAuth
+): Fragment() {
 
     private var fragmentBinding : FragmentLoginBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +39,21 @@ class LoginFragment : Fragment() {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
         }
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
+
+            val email = binding.loginEmailText.text.toString()
+            val password = binding.loginPasswordText.text.toString()
+            if (email.equals("") || password.equals("")){
+                Toast.makeText(requireContext(),"Email and password enter", Toast.LENGTH_LONG).show()
+            }else{
+                auth.signInWithEmailAndPassword(email,password).addOnSuccessListener {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
+                }.addOnFailureListener {
+                    Toast.makeText(requireContext(),it.localizedMessage ?: "Error!", Toast.LENGTH_LONG).show()
+                }
+            }
+
+
+
         }
     }
 

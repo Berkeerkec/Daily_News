@@ -7,13 +7,12 @@ import com.berkeerkec.dailynews.R
 import com.berkeerkec.dailynews.api.NewsApi
 import com.berkeerkec.dailynews.db.ArticleDao
 import com.berkeerkec.dailynews.db.ArticleDatabase
-import com.berkeerkec.dailynews.repo.BookmarkedRepository
-import com.berkeerkec.dailynews.repo.DetailsRepository
-import com.berkeerkec.dailynews.repo.NewsRepository
-import com.berkeerkec.dailynews.repo.SearchRepository
+import com.berkeerkec.dailynews.repo.*
 import com.berkeerkec.dailynews.util.Constant.Companion.BASE_URL
+import com.berkeerkec.dailynews.viewmodel.DetailsRepository
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -71,7 +70,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDetailsRepository(dao : ArticleDao) :  DetailsRepository{
+    fun provideDetailsRepository(dao : ArticleDao) : DetailsRepository {
         return DetailsRepository(dao)
     }
 
@@ -80,4 +79,9 @@ object AppModule {
     fun provideBookmarkedRepository(dao : ArticleDao) : BookmarkedRepository{
         return BookmarkedRepository(dao)
     }
+
+    @Singleton
+    @Provides
+    fun provideFirebaseAuth() : FirebaseAuth = FirebaseAuth.getInstance()
+
 }

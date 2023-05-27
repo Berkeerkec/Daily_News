@@ -1,4 +1,4 @@
-package com.berkeerkec.dailynews.repo
+package com.berkeerkec.dailynews.viewmodel
 
 import com.berkeerkec.dailynews.db.ArticleDao
 import com.berkeerkec.dailynews.model.Article

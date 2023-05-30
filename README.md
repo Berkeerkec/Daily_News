@@ -5,6 +5,8 @@ Libraries used:
 - Dagger-Hilt
 - MVVM
 - Repository
+- Coroutines
+- LiveData
 - Retrofit
 - Room Database
 - Firebase

@@ -7,6 +7,7 @@ Libraries used:
 - Repository
 - Coroutines
 - LiveData
+- ViewBinding
 - Retrofit
 - Room Database
 - Firebase

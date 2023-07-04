@@ -10,7 +10,7 @@ Libraries used:
 - ViewBinding
 - Retrofit
 - Room Database
-- Firebase
+- Firebase.
 
 
 ![Screenshot_20230530_190504_com berkeerkec dailynews](https://github.com/Berkeerkec/Daily_News/assets/101473351/297418ec-ec70-4807-8c54-2c2250aa49bd)
